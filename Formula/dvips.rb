@@ -1,3 +1,6 @@
+# Resources:
+# * Gentoo: https://gitweb.gentoo.org/repo/gentoo.git/tree/app-text/dvipsk
+
 class Dvips < Formula
   desc "Convert DVI to PostScript"
   homepage "https://tug.org/dvips/"

@@ -1,3 +1,6 @@
+# Resources:
+# * Gentoo: https://gitweb.gentoo.org/repo/gentoo.git/tree/app-text/ps2pkm
+
 class Ps2pk < Formula
   desc "Generate PK fonts from Type 1 fonts"
   homepage "https://ctan.org/pkg/ps2pk"

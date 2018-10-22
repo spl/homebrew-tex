@@ -1,3 +1,6 @@
+# Resources:
+# * Gentoo: https://gitweb.gentoo.org/repo/gentoo.git/tree/dev-libs/kpathsea
+
 class Kpathsea < Formula
   desc "Path searching library and tools for TeX-related files"
   homepage "https://tug.org/kpathsea/"
