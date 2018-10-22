@@ -11,6 +11,10 @@ class Dvips < Formula
   depends_on "pkg-config" => :build
   depends_on "kpathsea"
 
+  def testdata
+    prefix/"test"
+  end
+
   def install
     chdir "texk/dvipsk" do
       # Configure, build, install
@@ -26,7 +30,7 @@ class Dvips < Formula
       pkgshare.install share/"texmf-dist"
 
       # Save a file for the test.
-      (prefix/"test").install "testdata/eepic-nan.dvi"
+      testdata.install "testdata/eepic-nan.dvi"
     end
   end
 
@@ -52,6 +56,6 @@ class Dvips < Formula
   test do
     # If this test passes, then kpathsea is working and dvips can correctly
     # process a file.
-    system bin/"dvips", prefix/"test/eepic-nan.dvi"
+    system bin/"dvips", testdata/"eepic-nan.dvi"
   end
 end
