@@ -878,6 +878,10 @@ class Biber < Formula
   #  sha256 "7d47e4b229739601f013b3043a680501cb9da48d8887d8d5d622a862a2115f46"
   #end
 
+  def testdata
+    prefix/"test"
+  end
+
   def install
     ENV.prepend_create_path "PERL5LIB", libexec/"lib/perl5"
     # WARNING!
@@ -897,6 +901,19 @@ class Biber < Formula
 
     perl_build("biber")
     (bin/"biber").write_env_script(libexec/"bin/biber", :PERL5LIB => ENV["PERL5LIB"])
+
+    # Save a file for the test.
+    testdata.install Dir["t/tdata/full-bbl.{bbl,bcf,bib}"]
+  end
+
+  test do
+    # biber needs to be able to write to the source file (full-bbl.bcf) to
+    # update the Unicode NFC boundary, so we copy the files locally before the
+    # test. See https://github.com/plk/biber/blob/8ebedab/lib/Biber.pm#L323
+    cp Dir[testdata/"full-bbl.{bcf,bib}"], testpath
+    # The PDF doc recommends these flags.
+    system bin/"biber", "--validate-control", "--convert-control", "full-bbl.bcf"
+    assert compare_file testdata/"full-bbl.bbl", "full-bbl.bbl"
   end
 
   private
