@@ -12,7 +12,7 @@ class Dvips < Formula
   version "5.998"
 
   depends_on "pkg-config" => :build
-  depends_on "kpathsea"
+  depends_on "spl/tex/kpathsea"
 
   def testdata
     prefix/"test"

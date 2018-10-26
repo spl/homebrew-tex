@@ -12,7 +12,7 @@ class Ps2pk < Formula
   version "1.8.20180414"
 
   depends_on "pkg-config" => :build
-  depends_on "kpathsea"
+  depends_on "spl/tex/kpathsea"
 
   def testdata
     prefix/"test"

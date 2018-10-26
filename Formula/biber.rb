@@ -5,7 +5,7 @@ class Biber < Formula
   sha256 "7a752b9c2f418e6f419a3062e6213aff45bc402229fbc805ab9cb51afeb8c78e"
 
   depends_on "perl"
-  depends_on "bibtex-perl"
+  depends_on "spl/tex/bibtex-perl"
 
   # For XML::LibXML. See blacklist at:
   # https://github.com/shlomif/perl-XML-LibXML/blob/master/Makefile.PL
