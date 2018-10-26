@@ -9,7 +9,9 @@ class Teckit < Formula
   depends_on "libtool" => :build
   depends_on "automake" => :build
   depends_on "autoconf" => :build
-  depends_on "expat"
+
+  # Other dependencies:
+  #   * zlib - included in macOS
 
   def testdata
     prefix/"test"
@@ -23,9 +25,10 @@ class Teckit < Formula
       "--disable-debug",
       "--disable-dependency-tracking",
       "--disable-silent-rules",
-      "--enable-shared",
       "--disable-static",
       "--enable-final",
+      "--enable-shared",
+      "--with-system-zlib",
       "--prefix=#{prefix}"
     system "make", "install"
 
