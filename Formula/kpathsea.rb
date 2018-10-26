@@ -85,11 +85,9 @@ class Kpathsea < Formula
   end
 
   def caveats; <<~EOS
-    This formula creates the shared directory #{texmf_dist}
-    for all formulae using kpathsea.
-
-    After uninstalling kpathsea, you may which to remove this directory, which
-    is no longer used:
+    This formula creates a shared directory for use by all dependent formulae.
+    After uninstalling kpathsea, this directory is no longer needed, and you may
+    wish to remove it:
 
       rm -rf #{texmf_dist}
 
