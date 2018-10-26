@@ -61,6 +61,7 @@ class Kpathsea < Formula
         "--disable-dependency-tracking",
         "--disable-silent-rules",
         "--enable-shared",
+        "--disable-static",
         "--prefix=#{prefix}"
       system "make", "install"
 

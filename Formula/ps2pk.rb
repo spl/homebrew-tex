@@ -25,6 +25,7 @@ class Ps2pk < Formula
         "--disable-dependency-tracking",
         "--disable-silent-rules",
         "--enable-shared",
+        "--disable-static",
         "--with-system-kpathsea",
         "--prefix=#{prefix}"
       system "make", "install"
