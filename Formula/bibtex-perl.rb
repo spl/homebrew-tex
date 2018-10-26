@@ -56,7 +56,7 @@ class BibtexPerl < Formula
 
     resources.each do |r|
       r.stage do
-        perl_build(r)
+        perl_build(r.name)
       end
     end
 

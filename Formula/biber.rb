@@ -895,7 +895,7 @@ class Biber < Formula
 
     resources.each do |r|
       r.stage do
-        perl_build(r)
+        perl_build(r.name)
       end
     end
 
@@ -921,8 +921,9 @@ class Biber < Formula
   def perl_build(target)
     if File.exist? "Makefile.PL"
       # Net::SSLeay requires input to generate the Makefile. We use `yes ''` to
-      # "hit enter" and give the default answer.
-      system "yes '' | perl Makefile.PL INSTALL_BASE=#{libexec}"
+      # hit enter at each prompt and give default answers.
+      yes_pipe = target == "Net::SSLeay" ? "yes '' | " : ""
+      system "#{yes_pipe}perl Makefile.PL INSTALL_BASE=#{libexec}"
       system "make", "PERL5LIB=#{ENV["PERL5LIB"]}"
       system "make", "install"
     elsif File.exist? "Build.PL"
