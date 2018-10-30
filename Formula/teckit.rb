@@ -12,6 +12,7 @@ class Teckit < Formula
 
   # Other dependencies:
   #   * zlib - included in macOS
+  #   * libexpat - included in macOS
 
   def testdata
     prefix/"test"
@@ -20,20 +21,27 @@ class Teckit < Formula
   def install
     # Generate ./configure
     system "./autogen.sh"
-    # Configure, build, install
-    system "./configure",
-      "--disable-debug",
-      "--disable-dependency-tracking",
-      "--disable-silent-rules",
-      "--disable-static",
-      "--enable-final",
-      "--enable-shared",
-      "--with-system-zlib",
-      "--prefix=#{prefix}"
-    system "make", "install"
 
-    # Save files for the test.
-    testdata.install Dir["test/{SILGreek2004-04-27.map,SILGreek2004-04-27.uncompressed.tec.orig}"]
+    # Create a build directory as recommended by TECkit developers.
+    builddir = buildpath/"build"
+    builddir.mkpath
+
+    chdir builddir do
+      # Configure, build, install
+      system "../configure",
+        "--disable-debug",
+        "--disable-dependency-tracking",
+        "--disable-silent-rules",
+        "--disable-static",
+        "--enable-final",
+        "--enable-shared",
+        "--with-system-zlib",
+        "--prefix=#{prefix}"
+      system "make", "install"
+
+      # Save files for the test.
+      testdata.install Dir["../test/{SILGreek2004-04-27.map,SILGreek2004-04-27.uncompressed.tec.orig}"]
+    end
   end
 
   test do
