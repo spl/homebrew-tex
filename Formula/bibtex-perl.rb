@@ -16,6 +16,8 @@ class BibtexPerl < Formula
   url "https://cpan.metacpan.org/authors/id/A/AM/AMBS/Text-BibTeX-0.85.tar.gz"
   sha256 "1005455f09ad5d39ebf6b45c87106a7341cbe5a7b25251dd05c7c960d7ebd30c"
 
+  # The Perl version required is newer than the macOS system version. Also, this
+  # should be the same Perl as used by biber.
   depends_on "perl"
 
   conflicts_with "btparse", :because => "both install the same library and binaries"

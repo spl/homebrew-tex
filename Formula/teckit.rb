@@ -10,9 +10,9 @@ class Teckit < Formula
   depends_on "automake" => :build
   depends_on "autoconf" => :build
 
-  # Other dependencies:
-  #   * zlib - included in macOS
-  #   * libexpat - included in macOS
+  # System dependencies:
+  # zlib
+  # libexpat
 
   def testdata
     prefix/"test"

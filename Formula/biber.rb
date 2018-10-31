@@ -4,6 +4,8 @@ class Biber < Formula
   url "https://github.com/plk/biber/archive/v2.12.tar.gz"
   sha256 "7a752b9c2f418e6f419a3062e6213aff45bc402229fbc805ab9cb51afeb8c78e"
 
+  # The Perl version required is newer than the macOS system version. Also, this
+  # should be the same Perl as used by bibtex-perl.
   depends_on "perl"
   depends_on "spl/tex/bibtex-perl"
 

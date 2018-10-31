@@ -5,6 +5,9 @@ class Latexmk < Formula
   sha256 "6ab3fe2fb80f7dd94805c1094dc670d8930c45b33774cb308dc5cd2357007274"
   version "4.6.1"
 
+  # System dependencies:
+  # perl
+
   def install
     # Save the script.
     libexec.install "#{name}.pl"
