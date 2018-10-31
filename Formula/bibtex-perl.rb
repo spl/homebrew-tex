@@ -1,4 +1,4 @@
-# This formula build a library, binaries, and Perl modules.
+# This formula builds a library, binaries, and Perl modules.
 #
 # The library and binaries need some postprocessing: see below.
 #
