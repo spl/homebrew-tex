@@ -107,6 +107,7 @@ change.
 ### Homebrew
 
 * [Legacy `tex-live` formula](https://github.com/Homebrew/legacy-homebrew/blob/8c24aca1889b5f15ce9d60ce7671730cf50f3ba3/Library/Formula/tex-live.rb)
+* [Retired homebrew-tex tap](https://github.com/Homebrew/homebrew-tex)
 
 ### Other distributions
 
