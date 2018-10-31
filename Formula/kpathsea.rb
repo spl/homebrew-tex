@@ -9,7 +9,7 @@ class Kpathsea < Formula
   # Not a local mirror but is a permanent URL. Try it second.
   mirror "ftp://tug.org/historic/systems/texlive/2018/texlive-20180414-source.tar.xz"
   sha256 "fe0036d5f66708ad973cdc4e413c0bb9ee2385224481f7b0fb229700a0891e4e"
-  version "6.3.0"
+  version "6.3.0" # from c-auto.in
 
   def install
     chdir "texk/kpathsea" do
