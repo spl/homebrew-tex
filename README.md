@@ -111,6 +111,9 @@ change.
 
 ### Other distributions
 
-* [MacPorts](https://github.com/macports/macports-ports/tree/master/tex)
+* MacPorts [`tex` ports] and [TeX Live portgroup]
 * [Gentoo Linux](https://wiki.gentoo.org/wiki/TeX_Live)
 * [ArchLinux](https://wiki.archlinux.org/index.php/TeX_Live)
+
+[`tex` ports]: https://github.com/macports/macports-ports/tree/master/tex
+[TeX Live portgroup]: https://github.com/macports/macports-ports/blob/master/_resources/port1.0/group/texlive-1.0.tcl
