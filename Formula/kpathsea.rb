@@ -56,13 +56,15 @@ class Kpathsea < Formula
         s.gsub! /^(TEXMFSYSCONFIG) *= *(.*)/, "\\1 = #{etc}/texmf % was: \\2"
       end
 
-      # Configure, build, install
+      # Configure. See <texlive-source>/texk/kpathsea/ac/*.ac for defaults.
       system "./configure",
         "--disable-dependency-tracking",
         "--disable-silent-rules",
         "--enable-shared",
         "--disable-static",
         "--prefix=#{prefix}"
+
+      # Build and install.
       system "make", "install"
 
       # This path is required for post_install.

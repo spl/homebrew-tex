@@ -23,7 +23,7 @@ class Web2cWeb < Formula
       workdir.mkpath
 
       chdir workdir do
-        # Configure, build, install
+        # Configure. See <texlive-source>/texk/web2c/ac/web2c.ac for defaults.
         system "../configure",
           "--disable-dependency-tracking",
           "--disable-silent-rules",
@@ -77,10 +77,12 @@ class Web2cWeb < Formula
           "--disable-pmp",
           "--disable-upmp",
           "--prefix=#{prefix}"
+
+        # Build.
         system "make"
 
-        # 'make install' includes irrelevant files. So, we use DESTDIR and
-        # selective install instead.
+        # Install. 'make install' includes irrelevant files. So, we use DESTDIR
+        # and selective install instead.
         system "make", "install", "DESTDIR=#{buildpath}"
 
         %w[ ctangle ctie cweave tangle tie
