@@ -60,7 +60,6 @@ class Kpathsea < Formula
       system "./configure",
         "--disable-dependency-tracking",
         "--disable-silent-rules",
-        "--disable-multiplatform",
         "--enable-shared",
         "--disable-static",
         "--prefix=#{prefix}"
