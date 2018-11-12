@@ -16,7 +16,14 @@ class Kpathsea < Formula
   patch :DATA
 
   def install
-    chdir "texk/kpathsea" do
+    # Configuring and building in-tree is discouraged by the TeX Live folks.
+    # So, we create a work directory and do our things there.
+    workdir = buildpath/"work"
+    workdir.mkpath
+
+    srcdir = buildpath/"texk/kpathsea"
+
+    chdir workdir do
       # SELFAUTOLOC is a variable defined by kpathsea that tells a binary using
       # kpathsea (e.g. dvips, xdvi, dvisvgm, etc.) the location of that binary.
       # Since Homebrew installs formulae into unique directories and does not
@@ -26,12 +33,12 @@ class Kpathsea < Formula
       # Sources:
       #   * https://tobywf.com/2017/04/build-dvisvgm-kpathsea-on-macos/
       #   * https://gist.github.com/tobywf/aeeeee63053aaaa841b4032963406684
-      inreplace "progname.c",
+      inreplace srcdir/"progname.c",
         /kpathsea_selfdir *\(kpse, *kpse->invocation_name\)/,
         "xstrdup (\"#{HOMEBREW_PREFIX}/bin\")"
 
       # Configure. See <texlive-source>/texk/kpathsea/ac/*.ac for defaults.
-      system "./configure",
+      system srcdir/"configure",
         "--disable-dependency-tracking",
         "--disable-silent-rules",
         "--enable-shared",

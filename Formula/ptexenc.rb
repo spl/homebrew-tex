@@ -15,15 +15,22 @@ class Ptexenc < Formula
   depends_on "spl/tex/kpathsea"
 
   def install
-    chdir "texk/ptexenc" do
-      # Configure, build, install
-      system "./configure",
+    # Configuring and building in-tree is discouraged by the TeX Live folks.
+    # So, we create a work directory and do our things there.
+    workdir = buildpath/"work"
+    workdir.mkpath
+
+    chdir workdir do
+      # Configure.
+      system buildpath/"texk/ptexenc/configure",
         "--disable-dependency-tracking",
         "--disable-silent-rules",
         "--enable-shared",
         "--disable-static",
         "--with-system-kpathsea",
         "--prefix=#{prefix}"
+
+      # Build and install.
       system "make", "install"
     end
   end

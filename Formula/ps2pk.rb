@@ -19,15 +19,22 @@ class Ps2pk < Formula
   end
 
   def install
-    chdir "texk/ps2pk" do
-      # Configure, build, install
-      system "./configure",
+    # Configuring and building in-tree is discouraged by the TeX Live folks.
+    # So, we create a work directory and do our things there.
+    workdir = buildpath/"work"
+    workdir.mkpath
+
+    chdir workdir do
+      # Configure.
+      system buildpath/"texk/ps2pk/configure",
         "--disable-dependency-tracking",
         "--disable-silent-rules",
         "--enable-shared",
         "--disable-static",
         "--with-system-kpathsea",
         "--prefix=#{prefix}"
+
+      # Build and install.
       system "make", "install"
 
       # Save files for the test.
