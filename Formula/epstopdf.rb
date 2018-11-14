@@ -1,5 +1,5 @@
 class Epstopdf < Formula
-  desc "Con­vets EPS to PDF"
+  desc "Convert EPS to PDF"
   homepage "https://tug.org/epstopdf/"
   # We use svn to get a particular revision because the releases are not
   # versioned and the TeX Live distribution does not include the man page and
